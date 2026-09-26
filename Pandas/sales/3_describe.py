@@ -1,0 +1,11 @@
+import pandas as pd
+df=pd.read_csv('response for employee data.csv')
+print(df.head())
+print(df.info())
+print(df.describe())
+print(df.isnull().sum())
+print(df.tail())
+print(df.columns)
+print(df.shape)
+print(df.dtypes)
+print(df[1::5])

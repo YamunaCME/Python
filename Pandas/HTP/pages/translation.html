@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Translation Module</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <h3 class="logo">HTR AI</h3>
+
+        <ul>
+
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="ocr-recognition.html">OCR</a></li>
+            <li><a href="text-editor.html">Text Editor</a></li>
+            <li><a href="translation.html">Translation</a></li>
+        </ul>
+
+    </aside>
+
+    <main class="main-content">
+
+        <h2 class="mb-4">
+            Text Translation
+        </h2>
+
+        <div class="dashboard-card">
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <label>Source Language</label>
+
+                    <select
+                    id="sourceLang"
+                    class="form-select">
+
+                        <option>Auto Detect</option>
+                        <option>English</option>
+                        <option>Telugu</option>
+                        <option>Hindi</option>
+
+                    </select>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <label>Target Language</label>
+
+                    <select
+                    id="targetLang"
+                    class="form-select">
+
+                        <option>English</option>
+                        <option>Telugu</option>
+                        <option>Hindi</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <button
+            class="btn btn-primary mt-4"
+            onclick="translateText()">
+
+            Translate
+
+            </button>
+
+        </div>
+
+        <!-- Original Text -->
+
+        <div class="dashboard-card mt-4">
+
+            <h5>Original Text</h5>
+
+            <textarea
+            id="originalText"
+            rows="8"
+            class="form-control">
+
+This is OCR recognized text ready for translation.
+
+            </textarea>
+
+        </div>
+
+        <!-- Translation Result -->
+
+        <div
+        id="translationResult"
+        class="dashboard-card mt-4"
+        style="display:none;">
+
+            <h5>Translated Text</h5>
+
+            <textarea
+            id="translatedText"
+            rows="8"
+            class="form-control"></textarea>
+
+        </div>
+
+        <!-- Actions -->
+
+        <div class="mt-4">
+
+            <button
+            class="btn btn-success"
+            onclick="copyTranslation()">
+
+            Copy Translation
+
+            </button>
+
+            <button
+            class="btn btn-warning"
+            onclick="downloadTranslation()">
+
+            Download TXT
+
+            </button>
+
+            <a
+            href="export.html"
+            class="btn btn-info">
+
+            Continue to Export →
+
+            </a>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script>
+
+function translateText(){
+
+const source =
+document.getElementById(
+"sourceLang"
+).value;
+
+const target =
+document.getElementById(
+"targetLang"
+).value;
+
+const text =
+document.getElementById(
+"originalText"
+).value;
+
+document.getElementById(
+"translationResult"
+).style.display =
+"block";
+
+document.getElementById(
+"translatedText"
+).value =
+
+"[Demo Translation]\\n\\n" +
+"Source: " + source +
+"\\nTarget: " + target +
+"\\n\\n" +
+text;
+
+}
+
+function copyTranslation(){
+
+navigator.clipboard.writeText(
+
+document.getElementById(
+"translatedText"
+).value
+
+);
+
+alert(
+"Translation copied successfully"
+);
+
+}
+
+function downloadTranslation(){
+
+const text =
+document.getElementById(
+"translatedText"
+).value;
+
+const blob =
+new Blob([text],
+{type:"text/plain"});
+
+const link =
+document.createElement("a");
+
+link.href =
+URL.createObjectURL(blob);
+
+link.download =
+"translation.txt";
+
+link.click();
+
+}
+
+</script>
+
+</body>
+
+</html>

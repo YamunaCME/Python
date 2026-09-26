@@ -1,0 +1,7 @@
+f=open("greeating.txt","w+")
+f.write("good morning")
+f.write("hi")
+f.write("hello")
+f.seek(0)
+data=f.read()
+print(data)

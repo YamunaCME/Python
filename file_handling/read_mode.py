@@ -1,0 +1,6 @@
+f=open("greeating.txt","r")
+data=f.read()
+print(data)
+f.seek(0)
+lines=f.readlines()
+print("total lines=",len(lines))

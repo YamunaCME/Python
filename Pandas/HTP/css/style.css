@@ -1,0 +1,51 @@
+body{
+background:#0f172a;
+color:white;
+font-family:Segoe UI;
+}
+
+.hero{
+padding:100px 0;
+}
+
+.hero-img{
+max-width:350px;
+animation:float 3s infinite;
+}
+
+.glass-card{
+background:rgba(255,255,255,.1);
+backdrop-filter:blur(20px);
+border-radius:20px;
+}
+
+.glass-nav{
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(10px);
+}
+
+.feature-icon{
+font-size:50px;
+color:#06b6d4;
+}
+
+.auth-container{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.auth-card{
+background:rgba(255,255,255,.08);
+padding:30px;
+width:400px;
+border-radius:20px;
+backdrop-filter:blur(20px);
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0);}
+}
